@@ -1,0 +1,21 @@
+/** @format */
+
+.header {
+  &__group {
+    background-color: #000505;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-inline: 2em;
+    color: #fefcfd;
+
+    &__nav {
+      width: 900px;
+
+      &__segment {
+        background-color: #fefcfd;
+        color: #fefcfd;
+      }
+    }
+  }
+}
