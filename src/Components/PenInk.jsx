@@ -18,9 +18,18 @@ export default function PenInk() {
 
   return (
     <>
-    {filteredData.map(photo => (
-      <Image key={photo.public_id} src={photo.url} alt={photo.public_id}/>
-    ))}
+    <div className='big-container'>
+<div className="images-container">
+  {filteredData.filter((_, index) => index % 2 === 0).map(photo => (
+    <Image className={'image'} key={photo.public_id} src={photo.url} alt={photo.public_id} />
+  ))}
+  </div>
+  <div className="images-container">
+  {filteredData.filter((_, index) => index % 2 !== 0).map(photo => (
+    <Image className={'image'} key={photo.public_id} src={photo.url} alt={photo.public_id} />
+  ))}
+</div>
+</div>
     </>
   )
 }
