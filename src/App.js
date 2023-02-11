@@ -8,8 +8,10 @@ const App = () => {
 
   return (
 <>
+<div className="background">
 <HeaderComponent/>
 <Main/>
+</div>
 </>
   );
 };
