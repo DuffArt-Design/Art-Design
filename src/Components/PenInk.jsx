@@ -8,8 +8,11 @@ export default function PenInk() {
 
   const leftColumnRef = useRef(null);
 
+    // local use http://localhost:3001/photos
+  // delpoyed use https://duff-server.onrender.com/photos
+
   useEffect(() => {
-    fetch(`http://localhost:3001/photos`)
+    fetch(`https://duff-server.onrender.com/photos`)
       .then(res => res.json())
       .then(data => setPhotos(data.resources))
       .catch(err => console.error(err));

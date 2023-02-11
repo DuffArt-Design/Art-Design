@@ -1,6 +1,8 @@
 import { Image, Modal } from '@mantine/core';
 import React, { useState, useEffect, useRef } from 'react';
 
+
+
 export default function Photos() {
   const [photos, setPhotos] = useState([]);
   const [opened, setOpened] = useState(false);
@@ -8,8 +10,11 @@ export default function Photos() {
 
   const leftColumnRef = useRef(null);
 
+  // local use http://localhost:3001/photos
+  // delpoyed use https://duff-server.onrender.com/photos
+
   useEffect(() => {
-    fetch(`http://localhost:3001/photos`)
+    fetch(`https://duff-server.onrender.com/photos`)
       .then(res => res.json())
       .then(data => setPhotos(data.resources))
       .catch(err => console.error(err));
