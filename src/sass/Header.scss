@@ -1,5 +1,3 @@
-/** @format */
-
 .header {
   &__group {
     background-color: #000505;
@@ -8,14 +6,44 @@
     height: 100%;
     padding-inline: 2em;
     color: #fefcfd;
+  }
 
-    &__nav {
-      width: 900px;
+  &__group__nav {
+    margin-right: 1em;
+  }
 
-      &__segment {
-        background-color: #fefcfd;
-        color: #fefcfd;
-      }
+  &__group__title {
+    margin-right: 1em;
+  }
+
+  &__group__nav__segment {
+    background-color: #fefcfd;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    border-radius: 4px;
+  }
+
+  &__group__nav__segment__list {
+    margin: 0;
+  }
+
+  &__group__nav__segment__tab {
+    padding: 8px 16px;
+    border-radius: 0;
+  }
+
+  @media (max-width: 768px) {
+    &__group {
+      padding-inline: 1em;
+    }
+
+    &__group__nav {
+      margin-right: 0;
+    }
+
+    &__group__title {
+      margin-right: 0;
     }
   }
 }
