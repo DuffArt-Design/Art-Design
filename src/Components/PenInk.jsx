@@ -12,7 +12,7 @@ export default function PenInk() {
   // delpoyed use https://duff-server.onrender.com/photos
 
   useEffect(() => {
-    fetch(`https://duff-server.onrender.com/photos`)
+    fetch(`http://localhost:3001/photos`)
       .then(res => res.json())
       .then(data => setPhotos(data.resources))
       .catch(err => console.error(err));
