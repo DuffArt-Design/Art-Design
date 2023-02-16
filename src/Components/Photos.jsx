@@ -38,7 +38,6 @@ export default function Photos({ loggedIn }) {
     fetchPhotos();
   }, []);
   
-console.log(photos);
 
   
   return (

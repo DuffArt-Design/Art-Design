@@ -12,8 +12,6 @@ import Secret from './Secret';
 export default function Main() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  console.log("loggedIn:", loggedIn);
-
   return (
     <>
       <Routes>

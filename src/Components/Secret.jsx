@@ -15,7 +15,6 @@ export default function Secret({ onLogin }) {
   const handleLogin = () => {
     if (password === process.env.REACT_APP_PASSWORD) {
       onLogin(true);
-      console.log("onLogin called");
       navigate('/upload');
     } else {
       setError('Incorrect password');
