@@ -24,27 +24,7 @@ export default function Digital() {
   }, []);
   
 
-  // useEffect(() => {
-  //   if (leftColumnRef.current) {
-  //     const leftColumnItems = Array.from(leftColumnRef.current.children);
-  //     const rightColumnItems = leftColumnItems.splice(0, Math.ceil(leftColumnItems.length / 2));
-  
-  //     const leftColumnHeights = leftColumnItems.map(item => item.offsetHeight);
-  //     const rightColumnHeights = rightColumnItems.map(item => item.offsetHeight);
-  
-  //     rightColumnHeights.forEach((height, index) => {
-  //       if (height > leftColumnHeights[index]) {
-  //         rightColumnItems[index].classList.add('adjust-height');
-  //       }
-  //     });
-  
-  //     rightColumnItems.forEach((item, index) => {
-  //       if (index % 2 === 1) {
-  //         item.classList.add('alternate');
-  //       }
-  //     });
-  //   }
-  // }, [photos]);
+
 
   console.log(photos);
 
