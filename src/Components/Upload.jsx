@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useState } from 'react';
-import {  Input, MultiSelect } from '@mantine/core';
+import { useEffect,useState } from 'react';
+import {  Alert, Input, MultiSelect, Button } from '@mantine/core';
 
 export default function Upload() {
 
@@ -9,6 +9,7 @@ export default function Upload() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [text, setText] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
 
   const folders = [
     { value: 'digital', label: 'Digital' },
@@ -37,15 +38,33 @@ export default function Upload() {
       setName('');
       setDescription('');
       setText('');
+      setShowAlert(true);
     } catch (error) {
       console.error(error);
     }
   }
+
+  useEffect(() => {
+    if (showAlert) {
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+    }
+  }, [showAlert]);
   
   
   return (
     <>
-      <div>Upload</div>
+      <div className='upload'>
+      {showAlert && (
+        <Alert
+          title="Image Successfully Uploaded!"
+          color="teal"
+          radius="lg"
+          variant="filled"
+          className={`alert-transition ${showAlert ? 'opacity-100' : 'opacity-0'}`}
+        />
+      )}
       <form onSubmit={handleSubmit}>
       <Input.Wrapper
           id="input-link"
@@ -83,8 +102,9 @@ export default function Upload() {
         >
           <Input id="input-text" placeholder="This is one of my favorites pieces because of etc.." value={text} onChange={(event) => setText(event.target.value)} />
         </Input.Wrapper>
-        <button type="submit">Submit</button>
+        <Button className='upload_button' type="submit">Submit</Button>
       </form>
+      </div>
     </>
   );
 }
