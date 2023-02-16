@@ -16,7 +16,10 @@ export default function Photos() {
   useEffect(() => {
     fetch(`http://localhost:3001/pictures`)
       .then(res => res.json())
-      .then(data => setPhotos(data))
+      .then(data => {
+        const filteredData = data.filter(photo => photo.id.startsWith("photos"));
+        setPhotos(filteredData);
+      })
       .catch(err => console.error(err));
   }, []);
 
@@ -71,7 +74,7 @@ export default function Photos() {
       </Modal>
       <div className='big-container'>
         <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 0 && item.id.startsWith("photos")).map(photo => (
+          {photos.filter((item, index) => index % 3 === 0).map(photo => (
             <Image
               onClick={() => {
                 setSelectedPic(photo);
@@ -85,7 +88,7 @@ export default function Photos() {
           ))}
         </div>
         <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 1 && item.id.startsWith("photos")).map(photo => (
+          {photos.filter((item, index) => index % 3 === 1).map(photo => (
             <Image
               onClick={() => {
                 setSelectedPic(photo);
@@ -99,7 +102,7 @@ export default function Photos() {
           ))}
         </div>
         <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 2 && item.id.startsWith("photos")).map(photo => (
+          {photos.filter((item, index) => index % 3 === 2).map(photo => (
             <Image
               onClick={() => {
                 setSelectedPic(photo);
