@@ -14,9 +14,9 @@ export default function Photos() {
   // delpoyed use https://duff-server.onrender.com/photos
 
   useEffect(() => {
-    fetch(`https://duff-server.onrender.com/photos`)
+    fetch(`http://localhost:3001/pictures`)
       .then(res => res.json())
-      .then(data => setPhotos(data.resources))
+      .then(data => setPhotos(data))
       .catch(err => console.error(err));
   }, []);
 
@@ -41,6 +41,9 @@ export default function Photos() {
       });
     }
   }, [photos]);
+
+
+
   
   return (
     <>
@@ -52,54 +55,60 @@ export default function Photos() {
         opened={opened}
         onClose={() => setOpened(false)}
       >
-        <Image
-          height={710}
-          fit="contain"
-          onClick={() => setOpened(true)}
-          src={selectedPic}
-          alt={selectedPic}
-        />
+  {selectedPic && (
+    <>
+      <Image
+        height={710}
+        fit="contain"
+        src={selectedPic.url}
+        alt={selectedPic._id}
+      />
+      <h2>{selectedPic.name}</h2>
+      <p>{selectedPic.description}</p>
+      <p>{selectedPic.text}</p>
+    </>
+  )}
       </Modal>
       <div className='big-container'>
         <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 0 && item.public_id.startsWith("photos")).map(photo => (
+          {photos.filter((item, index) => index % 3 === 0 && item.id.startsWith("photos")).map(photo => (
             <Image
               onClick={() => {
-                setSelectedPic(photo.url);
+                setSelectedPic(photo);
                 setOpened(true);
               }}
               className={'image'}
-              key={photo.public_id}
+              key={photo._id}
               src={photo.url}
-              alt={photo.public_id}
+              alt={photo._id}
             />
           ))}
         </div>
         <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 1 && item.public_id.startsWith("photos")).map(photo => (
+          {photos.filter((item, index) => index % 3 === 1 && item.id.startsWith("photos")).map(photo => (
             <Image
               onClick={() => {
-                setSelectedPic(photo.url);
+                setSelectedPic(photo);
                 setOpened(true);
               }}
               className={'image'}
-              key={photo.public_id}
+              key={photo._id}
               src={photo.url}
-              alt={photo.public_id}
+              alt={photo._id}
             />
           ))}
         </div>
         <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 2 && item.public_id.startsWith("photos")).map(photo => (
+          {photos.filter((item, index) => index % 3 === 2 && item.id.startsWith("photos")).map(photo => (
             <Image
               onClick={() => {
-                setSelectedPic(photo.url);
+                setSelectedPic(photo);
                 setOpened(true);
               }}
               className={'image'}
-              key={photo.public_id}
+              key={photo._id}
               src={photo.url}
-              alt={photo.public_id}
+              alt={photo._id}
             />
           ))}
         </div>
