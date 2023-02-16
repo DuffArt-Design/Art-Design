@@ -1,0 +1,24 @@
+.upload {
+  width: 45%;
+  margin: auto;
+  padding-top: 60px;
+  
+  &_button {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+
+}
+
+.alert-transition {
+  transition: opacity 1.5s ease-in-out;
+}
+
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.opacity-0 {
+  opacity: 0;
+}

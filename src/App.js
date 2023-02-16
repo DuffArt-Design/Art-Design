@@ -8,10 +8,10 @@ const App = () => {
 
   return (
 <>
-<div className="background">
+{/* <div className="background"> */}
 <HeaderComponent/>
 <Main/>
-</div>
+{/* </div> */}
 </>
   );
 };
