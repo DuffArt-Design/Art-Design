@@ -1,4 +1,4 @@
-import { Image, Indicator, Modal } from '@mantine/core';
+import { Image, Indicator, Modal, Text } from '@mantine/core';
 import React, { useState, useEffect } from 'react';
 
 export default function PenInk({ loggedIn }) {
@@ -6,17 +6,12 @@ export default function PenInk({ loggedIn }) {
   const [opened, setOpened] = useState(false);
   const [selectedPic, setSelectedPic] = useState('');
 
-  // const leftColumnRef = useRef(null);
-
-  // local use http://localhost:3001/photos
-  // deployed use https://duff-server.onrender.com/photos
-
   const handleDelete = (photo) => {
-    fetch(`https://duff-server.onrender.com/pictures/${photo._id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/${photo._id}`, {
       method: 'DELETE',
     })
       .then(() => {
-        fetch(`https://duff-server.onrender.com/pictures`)
+        fetch(process.env.REACT_APP_SERVER_URL)
           .then(res => res.json())
           .then(data => {
             console.log('data:', data); // log the response from the server
@@ -30,7 +25,7 @@ export default function PenInk({ loggedIn }) {
   
   
   const fetchPhotos = () => {
-    fetch(`https://duff-server.onrender.com/pictures`)
+    fetch(process.env.REACT_APP_SERVER_URL)
       .then(res => res.json())
       .then(data => {
         const filteredData = data.filter(photo => photo.id.startsWith("pen_ink"));
@@ -48,28 +43,33 @@ export default function PenInk({ loggedIn }) {
   
   return (
     <>
-      <Modal
-        size="85%"
-        overlayColor='white'
-        overlayOpacity={0.55}
-        overlayBlur={3}
-        opened={opened}
-        onClose={() => setOpened(false)}
-      >
-        {selectedPic && (
-          <>
-            <Image
-              height={710}
-              fit="contain"
-              src={selectedPic.url}
-              alt={selectedPic._id}
-            />
-            <h2>{selectedPic.name}</h2>
-            <p>{selectedPic.description}</p>
-            <p>{selectedPic.text}</p>
-          </>
-        )}
-      </Modal>
+ <Modal
+  size="85%"
+  overlayColor='white'
+  overlayOpacity={0.55}
+  overlayBlur={3}
+  opened={opened}
+  onClose={() => setOpened(false)}
+>
+  {selectedPic && (
+    <>
+      <Image
+        height={710}
+        fit="contain"
+        src={selectedPic.url}
+        alt={selectedPic._id}
+      />
+      <div style={{ textAlign: 'center' }}>
+      <Text fz="lg" fw={700}>{selectedPic.name}</Text>
+      <Text fs="italic">{selectedPic.description}</Text>
+      {selectedPic.text && (
+        <Text c="dimmed">From the Artist: "{selectedPic.text}"</Text>
+      )
+      }
+      </div>
+    </>
+  )}
+</Modal>
       <div className='big-container'>
         <div className="images-container">
           {photos.filter((item, index) => index % 3 === 0).map(photo => (

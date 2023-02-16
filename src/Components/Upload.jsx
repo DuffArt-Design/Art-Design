@@ -23,17 +23,14 @@ export default function Upload() {
       file,
       folder: folder.join(''),
       name,
-      description
+      description,
+      text
+
     };
     
-    if (text.trim() !== '') {
-      data.text = text;
-    }
-  
-    console.log(data.file);
     try {
-      const response = await axios.post('https://duff-server.onrender.com/pictures', data);
-      console.log(response.data);
+      // eslint-disable-next-line no-unused-vars
+      const response = await axios.post(process.env.REACT_APP_SERVER_URL, data);
       setFile('');
       setName('');
       setDescription('');
@@ -66,6 +63,7 @@ export default function Upload() {
         />
       )}
       <form onSubmit={handleSubmit}>
+        <div className='upload_background'>
       <Input.Wrapper
           id="input-link"
           withAsterisk
@@ -103,6 +101,7 @@ export default function Upload() {
           <Input id="input-text" placeholder="This is one of my favorites pieces because of etc.." value={text} onChange={(event) => setText(event.target.value)} />
         </Input.Wrapper>
         <Button className='upload_button' type="submit">Submit</Button>
+        </div>
       </form>
       </div>
     </>
