@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import { Button, Input } from '@mantine/core';
 
 export default function Secret({ onLogin }) {
   const [password, setPassword] = useState('');
@@ -24,10 +25,10 @@ export default function Secret({ onLogin }) {
   
 
   return (
-    <div>
+    <div className='signIn'>
       <h2>Enter Password</h2>
-      <input type="password" value={password} onChange={handlePasswordChange} />
-      <button onClick={handleLogin}>Log In</button>
+      <Input type="password" value={password} onChange={handlePasswordChange} />
+      <Button className='signIn_button' onClick={handleLogin}>Log In</Button>
       {error && <div>{error}</div>}
     </div>
   );
