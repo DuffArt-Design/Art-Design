@@ -5,7 +5,7 @@ export default function Splash() {
   return (
     <Image
     className='splash'
-    src='https://res.cloudinary.com/dyatwpbwb/image/upload/v1675978125/digital/negative_fptt9x.png'
+    src='https://res.cloudinary.com/dyatwpbwb/image/upload/v1676517566/assets/negative_v7hvlg.png'
     />
   )
 }
