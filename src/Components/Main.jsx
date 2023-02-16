@@ -18,9 +18,9 @@ export default function Main() {
     <>
       <Routes>
         <Route path="/" element={<Splash />} />
-        <Route path="/digital" element={<Digital />} />
-        <Route path="/pen_ink" element={<PenInk />} />
-        <Route path="/photos" element={<Photos />} />
+        <Route path="/digital" element={<Digital loggedIn={loggedIn} />} />
+        <Route path="/pen_ink" element={<PenInk loggedIn={loggedIn} />} />
+        <Route path="/photos" element={<Photos loggedIn={loggedIn} />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/secret"
