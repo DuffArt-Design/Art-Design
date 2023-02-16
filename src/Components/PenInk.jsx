@@ -14,7 +14,7 @@ export default function PenInk() {
   // delpoyed use https://duff-server.onrender.com/photos
 
   useEffect(() => {
-    fetch(`http://localhost:3001/pictures`)
+    fetch(`https://duff-server.onrender.com/pictures`)
       .then(res => res.json())
       .then(data => {
         const filteredData = data.filter(photo => photo.id.startsWith("pen_ink"));
