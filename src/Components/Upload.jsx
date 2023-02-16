@@ -32,7 +32,7 @@ export default function Upload() {
   
     console.log(data.file);
     try {
-      const response = await axios.post('http://localhost:3001/pictures', data);
+      const response = await axios.post('https://duff-server.onrender.com/pictures', data);
       console.log(response.data);
       setFile('');
       setName('');
