@@ -23,9 +23,9 @@ export default function Main() {
         <Route path="/photos" element={<Photos />} />
         <Route path="/about" element={<About />} />
         <Route
-  path="/secret"
-  element={<Secret onLogin={(loggedIn) => setLoggedIn(loggedIn)} />}
-/>
+          path="/secret"
+          element={<Secret onLogin={(loggedIn) => setLoggedIn(loggedIn)} />}
+        />
         <Route
           path="/upload"
           element={
