@@ -5,6 +5,7 @@ import PenInk from './PenInk';
 import Photos from './Photos';
 import Digital from './Digital';
 import About from './About';
+import Upload from './Upload';
 
 export default function Main() {
   return (
@@ -29,6 +30,10 @@ export default function Main() {
         <Route
           path={'/about'}
           element={<About/>}
+        />
+                <Route
+          path={'/upload'}
+          element={<Upload/>}
         />
       </Routes>
     </>
