@@ -72,6 +72,12 @@
     }
   }
 
+  @media screen and (max-width: 923px) {
+    .header__group__title{
+      font-size: 25px;
+    }
+  }
+
 
   .header__group__nav__burger:hover {
     color: #dddcdc;

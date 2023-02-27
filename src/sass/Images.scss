@@ -52,3 +52,28 @@
   background-color: rgb(0, 0, 0);
 padding-bottom: 30vw;
 }
+
+.loading {
+  color: rgb(255, 255, 255);
+  font-size: 100px;
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+  }
+}
+
+.icon-container {
+  position: relative;
+}
+
+.fa-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: move 1s infinite alternate;
+}
