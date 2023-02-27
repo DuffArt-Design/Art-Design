@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from '@mantine/core';
 
 export default function Splash() {
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isMobile = window.matchMedia('(max-width: 924px)').matches;
 
 console.log(isMobile)
 
