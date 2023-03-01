@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Burger, Drawer, Group, Header, NavLink, Tabs } from '@mantine/core';
+import { Burger, Drawer, Image, Group, Header, NavLink, Tabs } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -21,7 +21,13 @@ export default function HeaderComponent() {
 
   return (
     <Header height={75} fixed={false} className="header">
-      <Group position="apart" className="header__group">
+      <Group position="center" className="header__group">
+
+        <Image
+        src="https://res.cloudinary.com/dyatwpbwb/image/upload/v1677707487/assets/Logo_with_Tree_Background_Bigger_gsh5oy.png"
+        height={40}
+        width={40}
+        />
         <h1 className="header__group__title">Duff Art & Design</h1>
         <Group position="right" className="header__group__nav">
           <Tabs className="header__group__nav__segment" variant="pills" defaultValue="home" radius="xs">
@@ -44,7 +50,7 @@ export default function HeaderComponent() {
                 Home
               </Tabs.Tab>
               <Tabs.Tab
-                color="teal"
+                color="dark"
                 value="digital"
                 icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-desktop" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -62,7 +68,7 @@ export default function HeaderComponent() {
                 Digital Art
               </Tabs.Tab>
               <Tabs.Tab
-                color="indigo"
+                color="dark"
                 value="pen_ink"
                 icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -78,7 +84,7 @@ export default function HeaderComponent() {
                 Pen & Ink
               </Tabs.Tab>
               <Tabs.Tab
-                color="orange"
+                color="dark"
                 value="photos"
                 icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-camera" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -94,7 +100,7 @@ export default function HeaderComponent() {
                 Photos
               </Tabs.Tab>
               <Tabs.Tab
-                color="pink"
+                color="dark"
                 value="about"
                 icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -131,6 +137,7 @@ export default function HeaderComponent() {
             overlayBlur={3}
           >
             <NavLink
+              variant="filled"
               color="dark"
               label='Home'
               active={'home' === active}
@@ -145,7 +152,8 @@ export default function HeaderComponent() {
               }}
             />
             <NavLink
-              color="teal"
+              variant="filled"
+                color="dark"
               label="Digital Art"
               active={'digital' === active}
               icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-desktop" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -160,7 +168,8 @@ export default function HeaderComponent() {
               }}
             />
             <NavLink
-              color="indigo"
+              variant="filled"
+                color="dark"
               label="Pen & Ink"
               active={'pen_ink' === active}
               icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -173,7 +182,8 @@ export default function HeaderComponent() {
               }}
             />
             <NavLink
-              color="orange"
+              variant="filled"
+                color="dark"
               label="Photos"
               active={'photos' === active}
               icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-camera" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -186,7 +196,8 @@ export default function HeaderComponent() {
               }}
             />
             <NavLink
-              color="pink"
+              variant="filled"
+                color="dark"
               label="About"
               active={'about' === active}
               icon={<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
