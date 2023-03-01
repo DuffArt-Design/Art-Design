@@ -31,6 +31,14 @@
     border-radius: 0;
   }
 
+  .header__group__title{
+    font-family: 'Gloock', serif;
+  }
+  .mantine-tn01rj {
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+
 
   @media screen and (min-width: 924px) {
     .header__group__nav__segment {
@@ -73,11 +81,16 @@
     .header__group__title{
       font-size: 20px;
       margin-left: -15px;
+      font-family: 'Gloock', serif;
     }
   }
 
 
   .header__group__nav__burger:hover {
     color: #dddcdc;
+  }
+
+  .mantine-ub9d20 {
+    background-color: #ffffff;
   }
 }
