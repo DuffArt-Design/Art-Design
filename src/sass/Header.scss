@@ -12,9 +12,7 @@
     margin-right: 1em;
   }
 
-  &__group__title {
-    margin-right: 1em;
-  }
+
 
   &__group__nav__segment {
     background-color: #fefcfd;
@@ -62,7 +60,6 @@
 
   .header__group__nav__burger {
     display: none;
-    margin-right: 1em;
     cursor: pointer;
   }
 
@@ -74,7 +71,8 @@
 
   @media screen and (max-width: 923px) {
     .header__group__title{
-      font-size: 25px;
+      font-size: 20px;
+      margin-left: -15px;
     }
   }
 
