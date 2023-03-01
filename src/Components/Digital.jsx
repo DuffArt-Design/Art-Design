@@ -41,9 +41,6 @@ export default function Digital({ loggedIn }) {
     fetchPhotos();
   }, []);
 
-
-
-
   return (
     <>
       {loading && <div >
@@ -54,7 +51,7 @@ export default function Digital({ loggedIn }) {
       </div>}
       <Modal
         size="85%"
-        overlayColor='white'
+        overlayColor='black'
         overlayOpacity={0.55}
         overlayBlur={3}
         opened={opened}
@@ -67,10 +64,11 @@ export default function Digital({ loggedIn }) {
               fit="contain"
               src={selectedPic.url}
               alt={selectedPic._id}
+
             />
             <div style={{ textAlign: 'center' }}>
-              <Text fz="lg" fw={700}>{selectedPic.name}</Text>
-              <Text fs="italic">{selectedPic.description}</Text>
+              <Text c="white" fz="lg" fw={700}>{selectedPic.name}</Text>
+              <Text c="white" fs="italic">{selectedPic.description}</Text>
               {selectedPic.text && (
                 <Text c="dimmed">From the Artist: "{selectedPic.text}"</Text>
               )
