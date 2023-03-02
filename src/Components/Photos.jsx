@@ -1,10 +1,12 @@
-import { Image, Indicator, Modal, Text } from '@mantine/core';
+import { Image, Indicator, Modal, Text, Group } from '@mantine/core';
 import React, { useState, useEffect } from 'react';
+import BarLoader from 'react-spinners/BarLoader';
 
 export default function Photos({ loggedIn }) {
   const [photos, setPhotos] = useState([]);
   const [opened, setOpened] = useState(false);
   const [selectedPic, setSelectedPic] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const handleDelete = (photo) => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/${photo._id}`, {
@@ -17,59 +19,75 @@ export default function Photos({ loggedIn }) {
             console.log('data:', data); // log the response from the server
             const filteredData = data.filter(photo => photo.id.startsWith("photos"));
             setPhotos(filteredData);
+            setLoading(false);
           })
           .catch(err => console.error(err));
       })
       .catch(err => console.error(err));
   };
-  
-  
+
+
   const fetchPhotos = () => {
     fetch(process.env.REACT_APP_SERVER_URL)
       .then(res => res.json())
       .then(data => {
         const filteredData = data.filter(photo => photo.id.startsWith("photos"));
         setPhotos(filteredData);
+        setLoading(false);
       })
       .catch(err => console.error(err));
   };
-  
+
   useEffect(() => {
     fetchPhotos();
   }, []);
-  
 
-  
+
+
   return (
     <>
-<Modal
-  size="85%"
-  overlayColor='black'
-  overlayOpacity={0.55}
-  overlayBlur={3}
-  opened={opened}
-  onClose={() => setOpened(false)}
->
-  {selectedPic && (
-    <>
-      <Image
-        height={710}
-        fit="contain"
-        src={selectedPic.url}
-        alt={selectedPic._id}
+          {loading &&
+        <div className='loading_container'>
+          <Group position="center">
+          <h1 className='loading'>Loading Images</h1>
+          <div class="icon-container">
+            <BarLoader
+              color='white'
+              loading={loading}
+              height={10}
+              width={1500}
+            />
+          </div>
+          </Group>
+        </div>}
+      <Modal
+        size="85%"
+        overlayColor='black'
+        overlayOpacity={0.55}
+        overlayBlur={3}
+        opened={opened}
+        onClose={() => setOpened(false)}
+      >
+        {selectedPic && (
+          <>
+            <Image
+              height={710}
+              fit="contain"
+              src={selectedPic.url}
+              alt={selectedPic._id}
 
-      />
-      <div style={{ textAlign: 'center' }}>
-      <Text c="white" fz="lg" fw={700}>{selectedPic.name}</Text>
-      <Text c="white" fs="italic">{selectedPic.description}</Text>
-      {selectedPic.text && (
-        <Text c="dimmed">From the Artist: "{selectedPic.text}"</Text>
-      )
-      }
-      </div>
-    </>
-  )}
-</Modal>
+            />
+            <div style={{ textAlign: 'center' }}>
+              <Text c="white" fz="lg" fw={700}>{selectedPic.name}</Text>
+              <Text c="white" fs="italic">{selectedPic.description}</Text>
+              {selectedPic.text && (
+                <Text c="dimmed">From the Artist: "{selectedPic.text}"</Text>
+              )
+              }
+            </div>
+          </>
+        )}
+      </Modal>
       <div className='big-container'>
         <div className="images-container">
           {photos.filter((item, index) => index % 3 === 0).map(photo => (
