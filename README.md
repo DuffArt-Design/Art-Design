@@ -1,6 +1,6 @@
 # Nick Mcduff's Art Portfolio Website
 
-**Note:** The code for this website is proprietary and not intended for public use. This repository is made public for the purpose of showcasing the website for [Client Name]'s art portfolio. Please do not clone, copy, or use the code without permission from the owner.
+**Note:** The code for this website is proprietary and not intended for public use. This repository is made public for the purpose of showcasing the website for Nick McDuff's art portfolio. Please do not clone, copy, or use the code without permission from the owner.
 
 This is a user-friendly platform designed to showcase the digital art portfolio of Nick McDuff. The website is built using modern technologies such as React, Cloudinary, MongoDB, Sass, Express, and Node to create a clean and seamless experience for users.
 
