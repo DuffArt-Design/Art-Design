@@ -26,6 +26,7 @@ export default function HeaderComponent() {
           src="https://res.cloudinary.com/dyatwpbwb/image/upload/v1677707487/assets/Logo_with_Tree_Background_Bigger_gsh5oy.png"
           height={40}
           width={40}
+          alt='Duff Logo'
         />
         <h1 className="header__group__title" >Duff Art & Design</h1>
         <Group position="right" className="header__group__nav">
