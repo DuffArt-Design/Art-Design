@@ -15,7 +15,6 @@ export default function Digital({ loggedIn }) {
         fetch(process.env.REACT_APP_SERVER_URL)
           .then(res => res.json())
           .then(data => {
-            console.log('data:', data); // log the response from the server
             const filteredData = data.filter(photo => photo.id.startsWith("digital"));
             setPhotos(filteredData);
             setLoading(false);
@@ -28,7 +27,7 @@ export default function Digital({ loggedIn }) {
 
   const fetchPhotos = () => {
 
-      fetch(process.env.REACT_APP_SERVER_URL)
+    fetch(process.env.REACT_APP_SERVER_URL)
       .then(res => res.json())
       .then(data => {
         const filteredData = data.filter(photo => photo.id.startsWith("digital"));
@@ -50,20 +49,18 @@ export default function Digital({ loggedIn }) {
 
   return (
     <>
-      {loading &&
-        <div className='loading_container'>
-          <Group position="center">
+      <div className={`loading_container ${loading ? 'visible' : ''}`}>
+        <Group position="center">
           <h1 className='loading'>Loading Images</h1>
-          <div class="icon-container">
+          <div class={`icon-container ${loading ? 'visible' : ''}`}>
             <BarLoader
               color='white'
-              loading={loading}
               height={10}
               width={1500}
             />
           </div>
-          </Group>
-        </div>}
+        </Group>
+      </div>
       <Modal
         size="85%"
         overlayColor='black'
@@ -91,7 +88,7 @@ export default function Digital({ loggedIn }) {
           </>
         )}
       </Modal>
-      <div className='big-container'>
+      <div className={`big-container ${!loading ? 'move-up' : ''}`}>
         <div className="images-container">
           {photos.filter((item, index) => index % 3 === 0).map(photo => (
             <div key={photo._id}>

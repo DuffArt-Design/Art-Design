@@ -54,20 +54,18 @@ export default function PenInk({ loggedIn }) {
   
   return (
     <>
-          {loading &&
-        <div className='loading_container'>
-          <Group position="center">
+      <div className={`loading_container ${loading ? 'visible' : ''}`}>
+        <Group position="center">
           <h1 className='loading'>Loading Images</h1>
-          <div class="icon-container">
+          <div class={`icon-container ${loading ? 'visible' : ''}`}>
             <BarLoader
               color='white'
-              loading={loading}
               height={10}
               width={1500}
             />
           </div>
-          </Group>
-        </div>}
+        </Group>
+      </div>
  <Modal
   size="85%"
   overlayColor='black'
@@ -96,7 +94,7 @@ export default function PenInk({ loggedIn }) {
     </>
   )}
 </Modal>
-      <div className='big-container'>
+<div className={`big-container ${!loading ? 'move-up' : ''}`}>
         <div className="images-container">
           {photos.filter((item, index) => index % 3 === 0).map(photo => (
             <div key={photo._id}>
