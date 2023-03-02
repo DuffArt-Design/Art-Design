@@ -123,7 +123,7 @@ export default function HeaderComponent() {
             onClick={() => setOpened((o) => !o)}
             title={title}
             color="#FFFFFF"
-            size="lg"
+            size="md"
             className="header__group__nav__burger"
           />
           <Drawer
