@@ -42,6 +42,7 @@
 .image:hover {
   transform: scale(1.03);
   transition: transform 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .adjust-height {
@@ -81,4 +82,9 @@
 .mantine-1r16qib {
   background-color: black;
   border: 1px solid rgba(255, 255, 255, 0.224);
+}
+
+.loading_container {
+  display: flex;
+  padding-bottom: 500px;
 }
