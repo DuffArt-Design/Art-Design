@@ -4,7 +4,9 @@ import { Image } from '@mantine/core';
 export default function Splash() {
   const isMobile = window.matchMedia('(max-width: 924px)').matches;
 
-console.log(isMobile)
+  
+//   first src is for mobile homepage image
+//   second src is for desktop homepage image
 
   return (
     <>
