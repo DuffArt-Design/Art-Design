@@ -9,10 +9,8 @@
   }
 
   &__group__nav {
-    margin-right: 1em;
+    margin-right: 0.6em;
   }
-
-
 
   &__group__nav__segment {
     background-color: #fefcfd;
@@ -35,12 +33,10 @@
     font-family: 'Gloock', serif;
   }
   .mantine-tn01rj {
-    background-color: #ffffff;
-    border-radius: 5px;
+    background-color: #000000;
   }
 
-
-  @media screen and (min-width: 924px) {
+  @media screen and (min-width: 952px) {
     .header__group__nav__segment {
       display: flex;
     }
@@ -59,38 +55,57 @@
   }
 
 
-  @media screen and (max-width: 923px) {
+  @media screen and (max-width: 953px) {
     .header__group__nav__segment {
       display: none;
     }
   }
-
 
   .header__group__nav__burger {
     display: none;
     cursor: pointer;
   }
 
-  @media screen and (max-width: 923px) {
+  @media screen and (max-width: 953px) {
     .header__group__nav__burger {
       display: block;
     }
   }
 
-  @media screen and (max-width: 923px) {
+  @media screen and (max-width: 953px) {
     .header__group__title{
-      font-size: 20px;
-      margin-left: -15px;
+      font-size: 23px;
+
       font-family: 'Gloock', serif;
     }
   }
-
 
   .header__group__nav__burger:hover {
     color: #dddcdc;
   }
 
-  .mantine-ub9d20 {
-    background-color: #ffffff;
-  }
+}
+
+.mantine-ub9d20{
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.mantine-nuxg7e {
+  color: #ffffff;
+}
+
+.mantine-nuxg7e:hover {
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.224);
+}
+
+.mantine-aikzia {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.224);
+}
+
+.mantine-aikzia:hover {
+background-color: #a7a7a799;
 }
