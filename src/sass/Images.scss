@@ -71,6 +71,16 @@
   font-size: 100px;
 }
 
+@media screen and (max-width: 952px) {
+  .loading {
+    font-size: 50px;
+  }
+
+  .big-container.move-up {
+    transform: translateY(-650px);
+  }
+}
+
 @keyframes move {
   from {
     transform: translateX(0);
