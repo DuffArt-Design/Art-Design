@@ -8,6 +8,7 @@
   margin-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px;
+    transition: transform 2.8s cubic-bezier(0.19, 1, 0.22, 1);
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
@@ -16,6 +17,10 @@
   @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.big-container.move-up {
+  transform: translateY(-770px);
 }
 
 .images-container {
@@ -36,13 +41,20 @@
   border: 1px solid rgba(255, 255, 255, 0.224);
   box-sizing: border-box;
   transform: scale(1);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .image:hover {
   transform: scale(1.03);
   transition: transform 0.5s ease-in-out;
+  cursor: pointer;
 }
+
+.image-fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
 
 .adjust-height {
   height: 100%;
@@ -67,18 +79,32 @@
   }
 }
 
-.icon-container {
-  position: relative;
-}
-
-.fa-circle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: move 1s infinite alternate;
-}
-
 .mantine-1r16qib {
   background-color: black;
   border: 1px solid rgba(255, 255, 255, 0.224);
+}
+
+.icon-container {
+  position: relative;
+      opacity: 0; 
+  transition: opacity 0.5s ease-in-out;
+}
+
+.loading_container {
+  display: flex;
+  padding-bottom: 500px;
+    opacity: 0; 
+  transition: opacity 0.5s ease-in-out;
+}
+
+.loading_container.visible {
+  opacity: 1; 
+    transition: opacity 0.5s ease-in-out;
+      display: block;
+}
+
+.icon-container.visible {
+    opacity: 1; 
+    transition: opacity 0.5s ease-in-out;
+      display: block;
 }

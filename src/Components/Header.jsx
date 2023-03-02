@@ -20,7 +20,7 @@ export default function HeaderComponent() {
   }
 
   return (
-    <Header height={75} fixed={false} className="header">
+    <Header height={100} fixed={false} className="header">
       <Group position="center" className="header__group">
 
         <Image
