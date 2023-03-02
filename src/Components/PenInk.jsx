@@ -28,15 +28,22 @@ export default function PenInk({ loggedIn }) {
   
   
   const fetchPhotos = () => {
+
     fetch(process.env.REACT_APP_SERVER_URL)
-      .then(res => res.json())
-      .then(data => {
-        const filteredData = data.filter(photo => photo.id.startsWith("pen_ink"));
-        setPhotos(filteredData);
-        setLoading(false);
-      })
-      .catch(err => console.error(err));
-  };
+    .then(res => res.json())
+    .then(data => {
+      const filteredData = data.filter(photo => photo.id.startsWith("pen_ink"));
+      setPhotos(filteredData);
+      setLoading(false);
+      setTimeout(() => {
+        const images = document.querySelectorAll('.image-fade-in');
+        images.forEach((img) => {
+          img.classList.remove('image-fade-in');
+        });
+      }, 300);
+    })
+    .catch(err => console.error(err));
+};
   
   useEffect(() => {
     fetchPhotos();
@@ -98,7 +105,7 @@ export default function PenInk({ loggedIn }) {
                   setSelectedPic(photo);
                   setOpened(true);
                 }}
-                className={'image'}
+                className='image image-fade-in'
                 src={photo.url}
                 alt={photo._id}
               />
@@ -116,7 +123,7 @@ export default function PenInk({ loggedIn }) {
                   setSelectedPic(photo);
                   setOpened(true);
                 }}
-                className={'image'}
+                className='image image-fade-in'
                 src={photo.url}
                 alt={photo._id}
               />
@@ -134,7 +141,7 @@ export default function PenInk({ loggedIn }) {
                   setSelectedPic(photo);
                   setOpened(true);
                 }}
-                className={'image'}
+                className='image image-fade-in'
                 src={photo.url}
                 alt={photo._id}
               />

@@ -7,10 +7,6 @@ export default function Digital({ loggedIn }) {
   const [opened, setOpened] = useState(false);
   const [selectedPic, setSelectedPic] = useState('');
   const [loading, setLoading] = useState(true);
-
-
-  
-
   const handleDelete = (photo) => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/${photo._id}`, {
       method: 'DELETE',
@@ -31,12 +27,19 @@ export default function Digital({ loggedIn }) {
 
 
   const fetchPhotos = () => {
-    fetch(process.env.REACT_APP_SERVER_URL)
+
+      fetch(process.env.REACT_APP_SERVER_URL)
       .then(res => res.json())
       .then(data => {
         const filteredData = data.filter(photo => photo.id.startsWith("digital"));
         setPhotos(filteredData);
         setLoading(false);
+        setTimeout(() => {
+          const images = document.querySelectorAll('.image-fade-in');
+          images.forEach((img) => {
+            img.classList.remove('image-fade-in');
+          });
+        }, 300);
       })
       .catch(err => console.error(err));
   };
@@ -76,7 +79,6 @@ export default function Digital({ loggedIn }) {
               fit="contain"
               src={selectedPic.url}
               alt={selectedPic._id}
-
             />
             <div style={{ textAlign: 'center' }}>
               <Text c="white" fz="lg" fw={700}>{selectedPic.name}</Text>
@@ -98,9 +100,9 @@ export default function Digital({ loggedIn }) {
                   setSelectedPic(photo);
                   setOpened(true);
                 }}
-                className={'image'}
                 src={photo.url}
                 alt={photo._id}
+                className='image image-fade-in'
               />
               {loggedIn && (
                 <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
@@ -116,9 +118,9 @@ export default function Digital({ loggedIn }) {
                   setSelectedPic(photo);
                   setOpened(true);
                 }}
-                className={'image'}
                 src={photo.url}
                 alt={photo._id}
+                className='image image-fade-in'
               />
               {loggedIn && (
                 <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
@@ -134,9 +136,9 @@ export default function Digital({ loggedIn }) {
                   setSelectedPic(photo);
                   setOpened(true);
                 }}
-                className={'image'}
                 src={photo.url}
                 alt={photo._id}
+                className='image image-fade-in'
               />
               {loggedIn && (
                 <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
