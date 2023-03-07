@@ -4,7 +4,7 @@
 
 This is a user-friendly platform designed to showcase the digital art portfolio of Nick McDuff. The website is built using modern technologies such as React, Cloudinary, MongoDB, Sass, Express, and Node to create a clean and seamless experience for users.
 
-## Live Site: ![Link](https://duffdesign.netlify.app/)
+## Live Site: [Link](https://duffdesign.netlify.app/)
 
 ## Features
 
