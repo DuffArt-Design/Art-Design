@@ -6,7 +6,8 @@ export default function PenInk({ loggedIn }) {
   const [photos, setPhotos] = useState([]);
   const [opened, setOpened] = useState(false);
   const [selectedPic, setSelectedPic] = useState('');
-    const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false)
 
   const handleDelete = (photo) => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/${photo._id}`, {
@@ -25,13 +26,15 @@ export default function PenInk({ loggedIn }) {
       })
       .catch(err => console.error(err));
   };
-  
-  
-  const fetchPhotos = () => {
 
-    fetch(process.env.REACT_APP_SERVER_URL)
-    .then(res => res.json())
-    .then(data => {
+  const MAX_RETRIES = 5;
+  const RETRY_DELAY = 3000;
+
+
+  const fetchPhotos = async (retryCount = 0) => {
+    try {
+      const response = await fetch(process.env.REACT_APP_SERVER_URL, { timeout: 10000 });
+      const data = await response.json();
       const filteredData = data.filter(photo => photo.id.startsWith("pen_ink"));
       setPhotos(filteredData);
       setLoading(false);
@@ -41,19 +44,32 @@ export default function PenInk({ loggedIn }) {
           img.classList.remove('image-fade-in');
         });
       }, 300);
-    })
-    .catch(err => console.error(err));
-};
-  
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+      if (retryCount < MAX_RETRIES) {
+        setTimeout(() => {
+          fetchPhotos(retryCount + 1);
+        }, RETRY_DELAY);
+      } else {
+        setError(true);
+      }
+    }
+  };
+
   useEffect(() => {
     fetchPhotos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
 
 
-  
+
+
   return (
     <>
+      {error && (
+        <p>Error Loading Images</p>
+      )}
       <div className={`loading_container ${loading ? 'visible' : ''}`}>
         <Group position="center">
           <h1 className='loading'>Loading Images</h1>
@@ -66,35 +82,35 @@ export default function PenInk({ loggedIn }) {
           </div>
         </Group>
       </div>
- <Modal
-  size="85%"
-  overlayColor='black'
-  overlayOpacity={0.55}
-  overlayBlur={3}
-  opened={opened}
-  onClose={() => setOpened(false)}
->
-  {selectedPic && (
-    <>
-      <Image
-        height={710}
-        fit="contain"
-        src={selectedPic.url}
-        alt={selectedPic._id}
+      <Modal
+        size="85%"
+        overlayColor='black'
+        overlayOpacity={0.55}
+        overlayBlur={3}
+        opened={opened}
+        onClose={() => setOpened(false)}
+      >
+        {selectedPic && (
+          <>
+            <Image
+              height={710}
+              fit="contain"
+              src={selectedPic.url}
+              alt={selectedPic._id}
 
-      />
-      <div style={{ textAlign: 'center' }}>
-      <Text c="white" fz="lg" fw={700}>{selectedPic.name}</Text>
-      <Text c="white" fs="italic">{selectedPic.description}</Text>
-      {selectedPic.text && (
-        <Text c="dimmed">From the Artist: "{selectedPic.text}"</Text>
-      )
-      }
-      </div>
-    </>
-  )}
-</Modal>
-<div className={`big-container ${!loading ? 'move-up' : ''}`}>
+            />
+            <div style={{ textAlign: 'center' }}>
+              <Text c="white" fz="lg" fw={700}>{selectedPic.name}</Text>
+              <Text c="white" fs="italic">{selectedPic.description}</Text>
+              {selectedPic.text && (
+                <Text c="dimmed">From the Artist: "{selectedPic.text}"</Text>
+              )
+              }
+            </div>
+          </>
+        )}
+      </Modal>
+      <div className={`big-container ${!loading ? 'move-up' : ''}`}>
         <div className="images-container">
           {photos.filter((item, index) => index % 3 === 0).map(photo => (
             <div key={photo._id}>

@@ -7,6 +7,7 @@ export default function Digital({ loggedIn }) {
   const [opened, setOpened] = useState(false);
   const [selectedPic, setSelectedPic] = useState('');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const handleDelete = (photo) => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/${photo._id}`, {
       method: 'DELETE',
@@ -25,30 +26,45 @@ export default function Digital({ loggedIn }) {
   };
 
 
-  const fetchPhotos = () => {
+  const MAX_RETRIES = 5;
+  const RETRY_DELAY = 3000;
 
-    fetch(process.env.REACT_APP_SERVER_URL)
-      .then(res => res.json())
-      .then(data => {
-        const filteredData = data.filter(photo => photo.id.startsWith("digital"));
-        setPhotos(filteredData);
-        setLoading(false);
+  const fetchPhotos = async (retryCount = 0) => {
+    try {
+      const response = await fetch(process.env.REACT_APP_SERVER_URL, { timeout: 10000 });
+      const data = await response.json();
+      const filteredData = data.filter(photo => photo.id.startsWith("digital"));
+      setPhotos(filteredData);
+      setLoading(false);
+      setTimeout(() => {
+        const images = document.querySelectorAll('.image-fade-in');
+        images.forEach((img) => {
+          img.classList.remove('image-fade-in');
+        });
+      }, 300);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+      if (retryCount < MAX_RETRIES) {
         setTimeout(() => {
-          const images = document.querySelectorAll('.image-fade-in');
-          images.forEach((img) => {
-            img.classList.remove('image-fade-in');
-          });
-        }, 300);
-      })
-      .catch(err => console.error(err));
+          fetchPhotos(retryCount + 1);
+        }, RETRY_DELAY);
+      } else {
+        setError(true);
+      }
+    }
   };
 
   useEffect(() => {
     fetchPhotos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
+      {error && (
+        <p>Error Loading Images</p>
+      )}
       <div className={`loading_container ${loading ? 'visible' : ''}`}>
         <Group position="center">
           <h1 className='loading'>Loading Images</h1>
