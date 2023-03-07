@@ -8,10 +8,10 @@ const App = () => {
 
   return (
 <>
-<div className="background">
+<body className="background">
 <HeaderComponent/>
 <Main/>
-</div>
+</body>
 </>
   );
 };
