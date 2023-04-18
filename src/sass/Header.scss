@@ -1,12 +1,13 @@
 .header {
   &__group {
-    background-color: #000505;
+    background-color: #000000;
     display: flex;
     align-items: center;
     height: 100%;
     padding-inline: 2em;
     color: #fefcfd;
-
+    z-index: 20;
+    position: relative;
   }
 
 
