@@ -11,7 +11,7 @@ export default function About() {
           key="about-motion"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
-          exit={{ opacity: 0, x: 100, transition: { duration: 0.75 } }}
+          exit={{ opacity: 0, x: -100, transition: { duration: 0.75 } }}
         >
       <div className='about_container'>
         <div className='about_image'>
