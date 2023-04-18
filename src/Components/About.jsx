@@ -1,4 +1,5 @@
 import { Image } from '@mantine/core';
+import { motion } from 'framer-motion';
 
 export default function About() {
   
@@ -6,6 +7,12 @@ export default function About() {
   
   return (
     <>
+            <motion.div
+          key="about-motion"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
+          exit={{ opacity: 0, x: 100, transition: { duration: 0.75 } }}
+        >
       <div className='about_container'>
         <div className='about_image'>
           <Image
@@ -23,6 +30,7 @@ export default function About() {
           <p className='text-email'>If anyone would like to reach out with any questions, please contact me at <a href="mailto:mcduffartanddesign@gmail.com">mcduffartanddesign@gmail.com</a></p>
         </div>
       </div>
+      </motion.div>
     </>
   );
 }
