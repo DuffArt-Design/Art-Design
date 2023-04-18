@@ -1,6 +1,7 @@
 import { Image, Indicator, Modal, Text, Group } from '@mantine/core';
 import React, { useState, useEffect } from 'react';
 import BarLoader from 'react-spinners/BarLoader';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function PenInk({ loggedIn }) {
   const [photos, setPhotos] = useState([]);
@@ -38,12 +39,6 @@ export default function PenInk({ loggedIn }) {
       const filteredData = data.filter(photo => photo.id.startsWith("pen_ink"));
       setPhotos(filteredData);
       setLoading(false);
-      setTimeout(() => {
-        const images = document.querySelectorAll('.image-fade-in');
-        images.forEach((img) => {
-          img.classList.remove('image-fade-in');
-        });
-      }, 300);
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -70,18 +65,28 @@ export default function PenInk({ loggedIn }) {
       {error && (
         <p>Error Loading Images</p>
       )}
-      <div className={`loading_container ${loading ? 'visible' : ''}`}>
-        <Group position="center">
-          <h1 className='loading'>Loading Images</h1>
-          <div class={`icon-container ${loading ? 'visible' : ''}`}>
-            <BarLoader
-              color='white'
-              height={10}
-              width={1500}
-            />
+        <AnimatePresence mode="wait">
+      {loading && (
+        <motion.div
+          key="pen-ink-loading"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
+          exit={{ opacity: 0, x: 100, transition: { duration: 0.75 } }}
+        >
+          <div className={`loading_container`}>
+            <Group position="center">
+              <h1 className='loading'>Loading Images</h1>
+              <div class={`icon-container`}>
+                <BarLoader
+                  color='white'
+                  height={10}
+                  width={1500}
+                />
+              </div>
+            </Group>
           </div>
-        </Group>
-      </div>
+        </motion.div>
+      )}
       <Modal
         size="85%"
         overlayColor='black'
@@ -110,62 +115,72 @@ export default function PenInk({ loggedIn }) {
           </>
         )}
       </Modal>
-      <div className={`big-container ${!loading ? 'move-up' : ''}`}>
-        <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 0).map(photo => (
-            <div key={photo._id}>
-              <Image
-                onClick={() => {
-                  setSelectedPic(photo);
-                  setOpened(true);
-                }}
-                className='image image-fade-in'
-                src={photo.url}
-                alt={photo._id}
-              />
-              {loggedIn && (
-                <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-              )}
+      {!loading && (
+        <motion.div
+          key="pen-ink-motion"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
+          exit={{ opacity: 0, x: 100, transition: { duration: 0.75 } }}
+        >
+          <div className={`big-container`}>
+            <div className="images-container">
+              {photos.filter((item, index) => index % 3 === 0).map(photo => (
+                <div key={photo._id}>
+                  <Image
+                    onClick={() => {
+                      setSelectedPic(photo);
+                      setOpened(true);
+                    }}
+                    className='image image-fade-in'
+                    src={photo.url}
+                    alt={photo._id}
+                  />
+                  {loggedIn && (
+                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 1).map(photo => (
-            <div key={photo._id}>
-              <Image
-                onClick={() => {
-                  setSelectedPic(photo);
-                  setOpened(true);
-                }}
-                className='image image-fade-in'
-                src={photo.url}
-                alt={photo._id}
-              />
-              {loggedIn && (
-                <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-              )}
+            <div className="images-container">
+              {photos.filter((item, index) => index % 3 === 1).map(photo => (
+                <div key={photo._id}>
+                  <Image
+                    onClick={() => {
+                      setSelectedPic(photo);
+                      setOpened(true);
+                    }}
+                    className='image image-fade-in'
+                    src={photo.url}
+                    alt={photo._id}
+                  />
+                  {loggedIn && (
+                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="images-container">
-          {photos.filter((item, index) => index % 3 === 2).map(photo => (
-            <div key={photo._id}>
-              <Image
-                onClick={() => {
-                  setSelectedPic(photo);
-                  setOpened(true);
-                }}
-                className='image image-fade-in'
-                src={photo.url}
-                alt={photo._id}
-              />
-              {loggedIn && (
-                <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-              )}
+            <div className="images-container">
+              {photos.filter((item, index) => index % 3 === 2).map(photo => (
+                <div key={photo._id}>
+                  <Image
+                    onClick={() => {
+                      setSelectedPic(photo);
+                      setOpened(true);
+                    }}
+                    className='image image-fade-in'
+                    src={photo.url}
+                    alt={photo._id}
+                  />
+                  {loggedIn && (
+                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </motion.div>
+      )}
+      </AnimatePresence>
     </>
   );
 
