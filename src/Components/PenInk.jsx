@@ -90,54 +90,69 @@ export default function PenInk({ loggedIn, photos, setPhotos, loading, error }) 
             <div className="images-container">
               {filteredData.filter((item, index) => index % 3 === 0).map(photo => (
                 <div key={photo._id}>
-                  <Image
-                    onClick={() => {
-                      setSelectedPic(photo);
-                      setOpened(true);
-                    }}
-                    className='image image-fade-in'
-                    src={photo.url}
-                    alt={photo._id}
-                  />
-                  {loggedIn && (
-                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-                  )}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Image
+                      onClick={() => {
+                        setSelectedPic(photo);
+                        setOpened(true);
+                      }}
+                      className='image'
+                      src={photo.url}
+                      alt={photo._id}
+                    />
+                    {loggedIn && (
+                      <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                    )}
+                  </motion.div>
                 </div>
               ))}
             </div>
             <div className="images-container">
               {filteredData.filter((item, index) => index % 3 === 1).map(photo => (
                 <div key={photo._id}>
-                  <Image
-                    onClick={() => {
-                      setSelectedPic(photo);
-                      setOpened(true);
-                    }}
-                    className='image image-fade-in'
-                    src={photo.url}
-                    alt={photo._id}
-                  />
-                  {loggedIn && (
-                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-                  )}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Image
+                      onClick={() => {
+                        setSelectedPic(photo);
+                        setOpened(true);
+                      }}
+                      className='image'
+                      src={photo.url}
+                      alt={photo._id}
+                    />
+                    {loggedIn && (
+                      <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                    )}
+                  </motion.div>
                 </div>
               ))}
             </div>
             <div className="images-container">
               {filteredData.filter((item, index) => index % 3 === 2).map(photo => (
                 <div key={photo._id}>
-                  <Image
-                    onClick={() => {
-                      setSelectedPic(photo);
-                      setOpened(true);
-                    }}
-                    className='image image-fade-in'
-                    src={photo.url}
-                    alt={photo._id}
-                  />
-                  {loggedIn && (
-                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-                  )}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Image
+                      onClick={() => {
+                        setSelectedPic(photo);
+                        setOpened(true);
+                      }}
+                      className='image'
+                      src={photo.url}
+                      alt={photo._id}
+                    />
+                    {loggedIn && (
+                      <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                    )}
+                  </motion.div>
                 </div>
               ))}
             </div>
