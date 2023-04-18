@@ -12,28 +12,28 @@ export default function Splash() {
     spinUpBackend();
   }, []);
 
-//   first src is for mobile homepage image
-//   second src is for desktop homepage image
+  //   first src is for mobile homepage image
+  //   second src is for desktop homepage image
 
   return (
     <>
-                <motion.div
-          key="splash-motion"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
-          exit={{ opacity: 0, x: 100, transition: { duration: 0.75 } }}
-        >
-      {isMobile ? (
-        <Image
-          className="splash"
-          src="https://res.cloudinary.com/dyatwpbwb/image/upload/v1677109395/digital/twkvqwg4wc0qxt8j4lir.jpg"
-        />
-      ) : (
-        <Image
-          className="splash"
-          src="https://res.cloudinary.com/dyatwpbwb/image/upload/v1676517566/assets/negative_v7hvlg.png"
-        />
-      )}
+      <motion.div
+        key="splash-motion"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.75 } }}
+        exit={{ opacity: 0, transition: { duration: 0.75 } }}
+      >
+        {isMobile ? (
+          <Image
+            className="splash"
+            src="https://res.cloudinary.com/dyatwpbwb/image/upload/v1677109395/digital/twkvqwg4wc0qxt8j4lir.jpg"
+          />
+        ) : (
+          <Image
+            className="splash"
+            src="https://res.cloudinary.com/dyatwpbwb/image/upload/v1676517566/assets/negative_v7hvlg.png"
+          />
+        )}
       </motion.div>
     </>
   );
