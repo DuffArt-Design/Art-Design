@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Image } from '@mantine/core';
+import { motion } from 'framer-motion';
 
 export default function Splash() {
   const isMobile = window.matchMedia('(max-width: 924px)').matches;
@@ -16,6 +17,12 @@ export default function Splash() {
 
   return (
     <>
+                <motion.div
+          key="splash-motion"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
+          exit={{ opacity: 0, x: 100, transition: { duration: 0.75 } }}
+        >
       {isMobile ? (
         <Image
           className="splash"
@@ -27,6 +34,7 @@ export default function Splash() {
           src="https://res.cloudinary.com/dyatwpbwb/image/upload/v1676517566/assets/negative_v7hvlg.png"
         />
       )}
+      </motion.div>
     </>
   );
 }
