@@ -8,7 +8,8 @@
   margin-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px;
-    transition: transform 2.8s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+  position: relative;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
