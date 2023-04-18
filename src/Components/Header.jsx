@@ -148,7 +148,8 @@ export default function HeaderComponent() {
                 <path d="M10 12h4v4h-4z"></path>
               </svg>}
               onClick={() => {
-                handleNavClick('home')
+                handleNavClick('home');
+                setOpened(false);
               }}
             />
             <NavLink
@@ -164,7 +165,8 @@ export default function HeaderComponent() {
                 <path d="M15 16l0 4"></path>
               </svg>}
               onClick={() => {
-                handleNavClick('digital')
+                handleNavClick('digital');
+                setOpened(false);
               }}
             />
             <NavLink
@@ -178,7 +180,8 @@ export default function HeaderComponent() {
                 <path d="M13.5 6.5l4 4"></path>
               </svg>}
               onClick={() => {
-                handleNavClick('pen_ink')
+                handleNavClick('pen_ink');
+                setOpened(false);
               }}
             />
             <NavLink
@@ -192,7 +195,8 @@ export default function HeaderComponent() {
                 <path d="M12 13m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
               </svg>}
               onClick={() => {
-                handleNavClick('photos')
+                handleNavClick('photos');
+                setOpened(false);
               }}
             />
             <NavLink
@@ -207,7 +211,8 @@ export default function HeaderComponent() {
                 <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
               </svg>}
               onClick={() => {
-                handleNavClick('about')
+                handleNavClick('about');
+                setOpened(false);
               }}
             />
           </Drawer>
