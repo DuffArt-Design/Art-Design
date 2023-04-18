@@ -1,6 +1,37 @@
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-top: 90px;
+  
+  &__name {
+    font-size: 90px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+    font-family: 'Gloock', serif;
+    margin-left: 20px;
+  }
+}
+
+
 @media screen and (max-width: 924px) {
   .splash {
     width: 100%;
     height: auto;
+  }
+  
+  .title {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &__name {
+      font-size: 40px;
+      font-weight: 700;
+    }
   }
 }

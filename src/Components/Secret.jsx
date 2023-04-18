@@ -20,8 +20,6 @@ export default function Secret({ onLogin }) {
       setError('Incorrect password');
     }
   };
-  
-  
 
   return (
     <div className='signIn'>

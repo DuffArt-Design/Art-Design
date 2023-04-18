@@ -32,7 +32,7 @@ export default function Digital({ loggedIn, photos, setPhotos, loading, error })
       {loading && (
         <motion.div
           key="digital-loading"
-          initial={{ opacity: 0}}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.75 } }}
           exit={{ opacity: 0, transition: { duration: 0.75 } }}
         >
@@ -88,54 +88,69 @@ export default function Digital({ loggedIn, photos, setPhotos, loading, error })
             <div className="images-container">
               {filteredData.filter((item, index) => index % 3 === 0).map(photo => (
                 <div key={photo._id}>
-                  <Image
-                    onClick={() => {
-                      setSelectedPic(photo);
-                      setOpened(true);
-                    }}
-                    src={photo.url}
-                    alt={photo._id}
-                    className='image image-fade-in'
-                  />
-                  {loggedIn && (
-                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-                  )}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Image
+                      onClick={() => {
+                        setSelectedPic(photo);
+                        setOpened(true);
+                      }}
+                      src={photo.url}
+                      alt={photo._id}
+                      className='image'
+                    />
+                    {loggedIn && (
+                      <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                    )}
+                  </motion.div>
                 </div>
               ))}
             </div>
             <div className="images-container">
               {filteredData.filter((item, index) => index % 3 === 1).map(photo => (
                 <div key={photo._id}>
-                  <Image
-                    onClick={() => {
-                      setSelectedPic(photo);
-                      setOpened(true);
-                    }}
-                    src={photo.url}
-                    alt={photo._id}
-                    className='image image-fade-in'
-                  />
-                  {loggedIn && (
-                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-                  )}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Image
+                      onClick={() => {
+                        setSelectedPic(photo);
+                        setOpened(true);
+                      }}
+                      src={photo.url}
+                      alt={photo._id}
+                      className='image'
+                    />
+                    {loggedIn && (
+                      <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                    )}
+                  </motion.div>
                 </div>
               ))}
             </div>
             <div className="images-container">
               {filteredData.filter((item, index) => index % 3 === 2).map(photo => (
                 <div key={photo._id}>
-                  <Image
-                    onClick={() => {
-                      setSelectedPic(photo);
-                      setOpened(true);
-                    }}
-                    src={photo.url}
-                    alt={photo._id}
-                    className='image image-fade-in'
-                  />
-                  {loggedIn && (
-                    <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
-                  )}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Image
+                      onClick={() => {
+                        setSelectedPic(photo);
+                        setOpened(true);
+                      }}
+                      src={photo.url}
+                      alt={photo._id}
+                      className='image'
+                    />
+                    {loggedIn && (
+                      <Indicator color="red" label="X" size={25} onClick={() => handleDelete(photo)}></Indicator>
+                    )}
+                  </motion.div>
                 </div>
               ))}
             </div>

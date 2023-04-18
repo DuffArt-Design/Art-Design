@@ -49,29 +49,29 @@ export default function Main() {
   return (
     <>
       <AnimatePresence mode="wait">
-      <Routes key={location.key} location={location}>
+        <Routes key={location.key} location={location}>
           <Route path="/" element={<Splash />} />
           <Route path="/digital" element={<Digital
-           loggedIn={loggedIn}
-           photos={photos}
-           loading={loading}
-           error={error}
-           setPhotos={setPhotos}
-            />} />
+            loggedIn={loggedIn}
+            photos={photos}
+            loading={loading}
+            error={error}
+            setPhotos={setPhotos}
+          />} />
           <Route path="/pen_ink" element={<PenInk
-           loggedIn={loggedIn}
-           photos={photos}
-           loading={loading}
-           error={error}
-           setPhotos={setPhotos}
-           />} />
+            loggedIn={loggedIn}
+            photos={photos}
+            loading={loading}
+            error={error}
+            setPhotos={setPhotos}
+          />} />
           <Route path="/photos" element={<Photos
-          loggedIn={loggedIn}
-          photos={photos}
-          loading={loading}
-          error={error}
-          setPhotos={setPhotos}
-           />} />
+            loggedIn={loggedIn}
+            photos={photos}
+            loading={loading}
+            error={error}
+            setPhotos={setPhotos}
+          />} />
           <Route path="/about" element={<About />} />
           <Route
             path="/secret"

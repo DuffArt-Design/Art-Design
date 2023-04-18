@@ -67,6 +67,7 @@
   }
 
   .header__group__nav__burger {
+    margin-left: 2px;
     display: none;
     cursor: pointer;
   }
@@ -80,9 +81,9 @@
 
   @media screen and (max-width: 953px) {
     .header__group__title {
-      font-size: 16px;
+      font-size: 22px;
       font-family: 'Gloock', serif;
-      margin-left: -13px;
+      margin-left: -8px;
     }
   }
 
